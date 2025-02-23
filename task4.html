@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>task#dusipaul|| Fadul</title>
+    <title>task#dusipaul || Fadul</title>
     <style>
         .container {
             max-width: 800px;
@@ -63,6 +63,12 @@
             background-color: #f0f0f0;
             border-radius: 3px;
         }
+
+        input[type="text"] {
+            padding: 5px;
+            margin-top: 10px;
+            width: calc(100% - 22px);
+        }
     </style>
 </head>
 <body>
@@ -79,7 +85,11 @@
 
         <div id="mainBox" class="box">
             <h2>Interactive Box</h2>
-            <p>This is a sample text that can be modified using DOM manipulation.</p>
+            <p>Please Add some text here and modify Content.</p>
+            <p id="dynamicText" text-color="red">Click the buttons above to see more DOM manipulation examples.</p>
+
+            <input type="text" id="textInput" placeholder="Edit the dynamic text here" />
+            <button onclick="updateText()">Update Text</button>
         </div>
 
         <div id="elementList">
@@ -125,8 +135,17 @@
             mainBox.innerHTML = `
                 <h2>Content Updated!</h2>
                 <p>This content was modified at ${currentTime}</p>
-                <p>Click the buttons above to see more DOM manipulation examples.</p>
+                <p id="dynamicText">Click the buttons above to see more DOM manipulation examples.</p>
+                <input type="text" id="textInput" placeholder="Edit the dynamic text here" />
+                <button onclick="modifyContent()">Update Content</button>
+                <button onclick="updateText()">Update Text</button>
             `;
+        }
+
+        // Update the dynamic text
+        function updateText() {
+            const newText = document.getElementById('textInput').value;
+            document.getElementById('dynamicText').textContent = newText;
         }
 
         // Add event listeners for hover effects
@@ -140,4 +159,4 @@
         });
     </script>
 </body>
-</html> 
+</html>
