@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task#dusipaul|| Fadul</title>
+    <style>
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        .box {
+            padding: 20px;
+            margin: 10px 0;
+            border: 2px solid #333;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .highlight {
+            background-color: yellow;
+            border-color: orange;
+        }
+
+        .dark-mode {
+            background-color: #333;
+            color: white;
+        }
+
+        .enlarged {
+            font-size: 1.5em;
+        }
+
+        .button-group {
+            margin: 20px 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #elementList {
+            margin: 20px 0;
+        }
+
+        .list-item {
+            padding: 10px;
+            margin: 5px 0;
+            background-color: #f0f0f0;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>#Task 4 Jean Paul and Fadul</h1>
+        
+        <div class="button-group">
+            <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+            <button onclick="addNewElement()">Add Element</button>
+            <button onclick="removeLastElement()">Remove Last Element</button>
+            <button onclick="toggleHighlight()">Toggle Highlight</button>
+            <button onclick="modifyContent()">Modify Content</button>
+        </div>
+
+        <div id="mainBox" class="box">
+            <h2>Interactive Box</h2>
+            <p>This is a sample text that can be modified using DOM manipulation.</p>
+        </div>
+
+        <div id="elementList">
+            <!-- Dynamic elements will be added here -->
+        </div>
+    </div>
+
+    <script>
+        // Toggle dark mode on the container
+        function toggleDarkMode() {
+            document.querySelector('.container').classList.toggle('dark-mode');
+        }
+
+        // Add a new element to the list
+        function addNewElement() {
+            const list = document.getElementById('elementList');
+            const newItem = document.createElement('div');
+            newItem.className = 'list-item';
+            newItem.textContent = `New Element ${list.children.length + 1}`;
+            newItem.onclick = function() {
+                this.classList.toggle('enlarged');
+            };
+            list.appendChild(newItem);
+        }
+
+        // Remove the last element from the list
+        function removeLastElement() {
+            const list = document.getElementById('elementList');
+            if (list.lastChild) {
+                list.removeChild(list.lastChild);
+            }
+        }
+
+        // Toggle highlight class on the main box
+        function toggleHighlight() {
+            document.getElementById('mainBox').classList.toggle('highlight');
+        }
+
+        // Modify the content of the main box
+        function modifyContent() {
+            const mainBox = document.getElementById('mainBox');
+            const currentTime = new Date().toLocaleTimeString();
+            mainBox.innerHTML = `
+                <h2>Content Updated!</h2>
+                <p>This content was modified at ${currentTime}</p>
+                <p>Click the buttons above to see more DOM manipulation examples.</p>
+            `;
+        }
+
+        // Add event listeners for hover effects
+        document.querySelectorAll('.box').forEach(box => {
+            box.addEventListener('mouseover', function() {
+                this.style.transform = 'scale(1.02)';
+            });
+            box.addEventListener('mouseout', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+</html> 
